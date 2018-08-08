@@ -21,8 +21,6 @@ public class HomeFragment extends Fragment {
     @BindView(R.id.recyclerView)
     RecyclerView mRecyclerView;
 
-    String names[] = new String[20];
-
     public HomeFragment() {
         // Required empty public constructor
     }
@@ -32,27 +30,27 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
-
-        ButterKnife.bind(this,view);
-
-
+        ButterKnife.bind(this, view);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
 
         // TODO: Call the load data method and populate the RV
+        loadData();
 
         return view;
     }
 
-    private void loadData(){
+    private void loadData() {
         ArrayList<NameModel> mArrayList = new ArrayList<>();
-        for(int i=0; i< CustomData.name.length; i++){
+
+        for (int i = 0; i < CustomData.name.length; i++) {
             mArrayList.add(new NameModel(CustomData.name[i]));
         }
         NamesAdapter adapter = new NamesAdapter(mArrayList);
         // TODO: Set the adapter to the recycler view
+        mRecyclerView.setAdapter(adapter);
     }
 
 }

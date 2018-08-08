@@ -12,6 +12,7 @@ public class MainActivity extends AppCompatActivity {
 
         if (savedInstanceState == null){
             // TODO: Display the Home Fragment (use getSupportFragmentManager)
+            getSupportFragmentManager().beginTransaction().replace(R.id.container_View,new HomeFragment()).commit();
         }
     }
 }

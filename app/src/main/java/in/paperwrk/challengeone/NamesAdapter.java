@@ -7,10 +7,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import java.util.ArrayList;
-
 import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public class NamesAdapter extends RecyclerView.Adapter<NamesAdapter.ViewHolder>{
 
@@ -39,22 +38,19 @@ public class NamesAdapter extends RecyclerView.Adapter<NamesAdapter.ViewHolder>{
     */
     @Override
     public int getItemCount() {
-        return 0;
+        return arrayList.size();
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder{
         Context mContext;
-
         //TODO: Init the Text View
-
-        /*@BindView(R.id.title)
-        TextView textName;*/
-
+        @BindView(R.id.title)
+        TextView textName;
         ViewHolder(View itemView){
             super(itemView);
             mContext = itemView.getContext();
             // TODO:  Butterknife.bind() https://teamtreehouse.com/community/binding-widgets-in-viewholder-with-butterknife;
-
+            ButterKnife.bind(ViewHolder.this,itemView);
         }
     }
 
